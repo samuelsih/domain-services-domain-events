@@ -5,7 +5,6 @@ Muhammad Ferdian Iqbal
 Naufal Adli Purnama
 Samuel
 
-
 ## Domain Events
 
 —_A domain event captures the memory of something interesting which affects the domain_— Martin Fowler
@@ -77,7 +76,7 @@ _Siapa yang pesan? Di mana dia? Mau ke mana? Bayar pake apa?_
         }
     }
 
-## 
+## Contoh
     List<Event> events = new List<Event>();
     events.push(new CustomerOrderedOjekEvent(customerId, orderId, message, timestamp));
 
@@ -93,7 +92,7 @@ _Siapa yang pesan? Di mana dia? Mau ke mana? Bayar pake apa?_
         }
     }
 
-## 
+## Lanjutan
     ...
     try {
             publishing.set(true);
