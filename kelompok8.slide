@@ -115,5 +115,5 @@ _Siapa yang pesan? Di mana dia? Mau ke mana? Bayar pake apa?_
             publishing.set(false);
     }
 
-## Diagram
-.image assets/domain_event_diagram.png 500 800
+// ## Diagram
+// .image assets/domain_event_diagram.png 500 800
