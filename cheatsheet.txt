@@ -1,0 +1,38 @@
+## Ini buat variasi tulisan
+_italic_
+
+// A comment that is completely ignored.
+
+: Speaker notes.
+
+**bold**
+
+`program`
+
+Markup—_especially italic text_—can easily be overused.
+
+_Why use scoped\_ptr_? Use plain **\*ptr** instead
+
+.link https://foo ini buat link external
+
+## More
+Use code example
+
+Preformatted text (code block)
+is indented (by one tab, or four spaces)
+
+    class Main {
+        public static void main(String[] args) {
+            System.out.println("Hello World");
+        }
+    }
+
+
+## Domain Services
+
+Inilah penjelasannya, taruh di sini
+
+- bullets
+- more bullets
+- a bullet continued
+  on the next line
