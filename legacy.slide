@@ -106,3 +106,6 @@ _Siapa_yang_pesan?_Di_mana_dia?_Mau_ke_mana?_Bayar_pake_apa?_
     } finally {
             publishing.set(false);
     }
+
+* Diagram
+.image assets/domain_event_diagram.png 500 800
