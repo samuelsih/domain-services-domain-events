@@ -80,7 +80,7 @@ Domain Service must NOT hold a state. Domain Service must NOT contain any field 
     }
 
 
-*
+* Service
     class ExchangeRateService {
         Repository repo
         bool forceRefresh
