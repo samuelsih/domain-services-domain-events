@@ -1,0 +1,128 @@
+Domain Service
+
+30 Maret 2023
+
+Muhammad Ferdian Iqbal
+Naufal Adli Purnama
+Samuel
+
+* Domain Service
+Encapsulates business logic that doesn't naturally fit within a domain object, and are *NOT* *typical* *CRUD* *operations* – those would belong to a Repository.
+
+Domain Services does not handle sessions or requests. It does not know anything about UI components. It does not execute database migration. It does not validate user input. Domain Service only manages business logic.
+
+* Application Service vs Domain Service
+
+Application service = _order_an_ebook_or_give_me_the_list_of_available_ebooks_
+Domain service = _calculate_the_order_total_
+
+
+* Example = Exchange Rate
+    interface ExchangerRate {
+        public bool IsConversionPossible(from, to)
+        public Money Convert(from, to)
+    }
+
+* Service Implements
+    class ExchangeRateService implements ExchangerRate {
+        Repository repo;
+
+        public bool IsConversionPossible(from, to) {
+            // logic
+
+            return true
+        }
+
+        public Money Convert(from, to) {
+            Money money
+
+            // some logic
+
+            return money
+        }
+    }
+
+* Another One
+    class CasinoService {
+        Repository bonusRepo
+        AccountService accountService
+
+        void Bet(account, money) {
+            bonuses = this.bonusRepo.FindAllEligibleFor(account, money)
+
+            // logic
+
+            for bonus in range bonuses {
+                bonus.Apply(account)
+            }
+
+            this.accountService.Update(account)
+
+            print("GACORRRR!!!!!!!!!!")
+        }
+    }
+
+
+* Note
+Domain Service must NOT hold a state. Domain Service must NOT contain any field that has a state, as well
+
+    // entity keeps state
+    class Account {
+        UUID id
+        Person person
+        List<Wallet> wallets
+    }
+
+    // value object keeps state
+    class Money {
+        int amount
+        Currency currency
+    }
+
+
+*
+    class ExchangeRateService {
+        Repository repo
+        bool forceRefresh
+    }
+
+    class CasinoService {
+        Repository bonusRepo
+        Factory bonusFactory
+        AccountService accountService
+    }
+
+
+* Wrong
+
+    class TransactionService {
+        Repository bonusRepo
+        Money result
+
+        void Deposit(Account account, Money money) {
+            bonuses = this.bonusRepository.FindAllEligibleFor(account, money)
+            
+            //some logic
+
+            this.result = this.result.Add(money) // changing state
+        }
+    }
+
+* Instead, do this
+
+    class TransactionService {
+        Repository bonusRepo
+
+        void Deposit(Money current, Account account, Money money) {
+            bonuses = this.bonusRepository.FindAllEligibleFor(account, money)
+            
+            //some logic
+
+            current.Add(money) 
+        }
+    }
+
+* Summary
+- Domain services carry domain knowledge; application services don’t (ideally)
+- Domain services hold domain logic that doesn’t naturally fit entities and value objects
+- Introduce domain services when you see that some logic cannot be attributed to an entity/value object because that would break their isolation.
