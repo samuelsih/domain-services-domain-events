@@ -93,7 +93,7 @@ Domain Service must NOT hold a state. Domain Service must NOT contain any field 
 * Wrong
 
     class TransactionService {
-        Repository bonusRepo
+        Repository bonusRepository
         Money result
 
         void Deposit(Account account, Money money) {
